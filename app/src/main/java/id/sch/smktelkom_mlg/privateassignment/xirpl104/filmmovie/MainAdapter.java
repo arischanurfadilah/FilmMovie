@@ -37,7 +37,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     } //menyambungkan ke xmlnya
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         final ListItem homeListItem = homeListItems.get(position);// yg homeListItem digunakan untuk .load
 
         holder.textViewHead.setText(homeListItem.getHead());
@@ -47,6 +47,17 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                 .with(context)
                 .load(homeListItem.getImageUrl())
                 .into(holder.imageViewOtof);
+
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "klik aja" + homeListItem.getHead(), Toast.LENGTH_LONG).show();
+                Intent singleBlogIntent = new Intent(context, DetailActivity.class);
+                singleBlogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                singleBlogIntent.putExtra("blog_id", position);
+                context.startActivity(singleBlogIntent);
+            }
+        });
     }//mau diapakan viewnya
 
     @Override
