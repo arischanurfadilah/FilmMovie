@@ -57,6 +57,8 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 doSimpan();
+                Snackbar.make(view, "Berhasil ditambahkan ke favorit", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
 

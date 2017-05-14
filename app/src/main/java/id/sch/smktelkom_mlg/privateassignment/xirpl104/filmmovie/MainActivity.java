@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
 
         @Override
@@ -159,8 +159,7 @@ public class MainActivity extends AppCompatActivity {
                     return "MOVIE";
                 case 1:
                     return "FAVORITE";
-                case 2:
-                    return "SECTION 3";
+
             }
             return null;
         }
