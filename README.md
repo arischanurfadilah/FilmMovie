@@ -1,4 +1,7 @@
 # FilmMovie
+ <h3>Nama Aplikasi</h3>
+ FilmMovie
+ 
  <h3>Link File APK</h3>
 http://www.mediafire.com/file/whmv7kjvml8tb22/app-release.apk
 
@@ -12,8 +15,11 @@ SMK Telkom Malang
 <h3>Alamat API yang digunakan</h3>
 https://api.nytimes.com/svc/movies/v2/reviews/search.json?api-key=4a6fa006328e481ca9db426be82091c1
 
+<H3>Jenis Navigasi yang digunakan pada Aplikasi</H3>
+Action Bar Tabs
+
 <h3>Library local database yang digunakan</h3>
-sugar orm
+Sugar ORM
 
 <h3>Deskripsi Singkat</h3>
 Aplikasi FilmMovie diciptakan bagi Anda pecinta Film. Anda bisa melihat list film yang ditayangkan di bioskop. Dalam aplikasi ini juga disediakan fitur favorite, untuk memudahkan Anda meriview film favorite Anda. Untuk menambahkan film ke list favorit dapat dilakukan dengan cara menekan tombol bintang pada halaman detail film. kemudian lihat pada halaman favorit untuk melihat hasilnya. Jika film yang ada halaman favorit sudah tidak Anda sukai, maka Anda bisa menghapusnnya dengan cara menekan button Delete.
