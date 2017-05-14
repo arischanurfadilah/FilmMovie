@@ -26,13 +26,15 @@ import org.json.JSONObject;
 
 public class DetailActivity extends AppCompatActivity {
     private Integer mPostkey = null;
-    private static final String URL_DATA = "https://api.nytimes.com/svc/movies/v2/reviews/search.json?api-key=f5abb6679ae54501a9be8139e683bebc";
+    private static final String URL_DATA = "https://api.nytimes.com/svc/movies/v2/reviews/search.json?api-key=4a6fa006328e481ca9db426be82091c1";
 
     public TextView textViewHeadet;
     public TextView textViewDescet;
     public TextView textViewReview;
     public ImageView imageViewDetail;
     public String url;
+    public String urlGambar;
+    Special special;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,10 @@ public class DetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        textViewHeadet = (TextView) findViewById(R.id.textViewHeadet);
+        textViewDescet = (TextView) findViewById(R.id.textViewDescet);
+        textViewReview = (TextView) findViewById(R.id.textViewReview);
+        imageViewDetail = (ImageView) findViewById(R.id.imageViewDetail);
 
         mPostkey = getIntent().getExtras().getInt("blog_id");
         loadRecyclerViewData();
@@ -51,16 +56,9 @@ public class DetailActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Uri uri = Uri.parse(url); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
+                doSimpan();
             }
         });
-
-        textViewHeadet = (TextView) findViewById(R.id.textViewHeadet);
-        textViewDescet = (TextView) findViewById(R.id.textViewDescet);
-        textViewReview = (TextView) findViewById(R.id.textViewReview);
-        imageViewDetail = (ImageView) findViewById(R.id.imageViewDetail);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -70,6 +68,14 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void doSimpan() {
+        String judul = textViewHeadet.getText().toString();
+        String deskripsi = textViewDescet.getText().toString();
+        String urlgambar = urlGambar;
+        special = new Special(judul, deskripsi, urlgambar);
+        special.save();
     }
 
     private void loadRecyclerViewData() {
@@ -94,15 +100,11 @@ public class DetailActivity extends AppCompatActivity {
                             textViewDescet.setText(o.getString("byline"));
                             textViewReview.setText(o.getString("summary_short"));
                             url = o.getJSONObject("link").getString("url");
+                            urlGambar = o.getJSONObject("multimedia").getString("src");
                             Glide
                                     .with(DetailActivity.this)
                                     .load(o.getJSONObject("multimedia").getString("src"))
                                     .into(imageViewDetail);
-
-
-
-
-
                         } catch (JSONException e){
                             e.printStackTrace();
                         }

@@ -140,6 +140,8 @@ public class MainActivity extends AppCompatActivity {
             // Return a PlaceholderFragment (defined as a static inner class below).
             if (position==0)
                 return new FragmentSatu();
+            else if (position==1)
+                return new SpecialFragment();
             else
                 return PlaceholderFragment.newInstance(position + 1);
         }
@@ -154,9 +156,9 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "MOVIE";
                 case 1:
-                    return "SECTION 2";
+                    return "FAVORITE";
                 case 2:
                     return "SECTION 3";
             }
