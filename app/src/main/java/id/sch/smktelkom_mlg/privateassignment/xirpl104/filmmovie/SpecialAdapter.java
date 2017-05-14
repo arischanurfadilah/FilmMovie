@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,7 +34,7 @@ public class SpecialAdapter extends RecyclerView.Adapter<SpecialAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         Special favouriteItem = sItem.get(position);
         holder.textViewHeadfav.setText(favouriteItem.judul);
         holder.textViewDescfav.setText(favouriteItem.deskripsi);
@@ -41,6 +42,16 @@ public class SpecialAdapter extends RecyclerView.Adapter<SpecialAdapter.ViewHold
                 .with(context)
                 .load(favouriteItem.urlgambar)
                 .into(holder.imageViewOtoffav);
+        holder.buttonDelete.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                final Special favouriteItem1 = sItem.get(position);
+                sItem.remove(position);
+                favouriteItem1.delete();
+                SpecialAdapter.this.notifyDataSetChanged();
+
+            }
+        });
     }
 
     @Override
@@ -52,6 +63,7 @@ public class SpecialAdapter extends RecyclerView.Adapter<SpecialAdapter.ViewHold
         public TextView textViewHeadfav;
         public TextView textViewDescfav;
         public ImageView imageViewOtoffav;
+        public Button buttonDelete;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -59,6 +71,7 @@ public class SpecialAdapter extends RecyclerView.Adapter<SpecialAdapter.ViewHold
             textViewHeadfav = (TextView) itemView.findViewById(R.id.textViewHeadfav);
             textViewDescfav = (TextView) itemView.findViewById(R.id.textViewDescfav);
             imageViewOtoffav = (ImageView) itemView.findViewById(R.id.imageViewOtoffav);
+            buttonDelete = (Button) itemView.findViewById(R.id.buttonDelete);
         }
     }
 }
