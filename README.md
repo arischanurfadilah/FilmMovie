@@ -10,7 +10,7 @@ Angkatan : 24<br>
 SMK Telkom Malang
 
 <h3>Alamat API yang digunakan</h3>
-https://developer.nytimes.com/
+https://api.nytimes.com/svc/movies/v2/reviews/search.json?api-key=4a6fa006328e481ca9db426be82091c1
 
 <h3>Library local database yang digunakan</h3>
 sugar orm
