@@ -8,7 +8,7 @@ http://www.mediafire.com/file/whmv7kjvml8tb22/app-release.apk
 <h3>Identitas</h3>
 Nama lengkap : Arischa Nur Fadilah<br>
 Kelas / No urut : XIRPL1 / 04<br>
-NIS : 4670<br>
+NIS : 4670/1389.070<br>
 Angkatan : 24<br>
 SMK Telkom Malang
 
